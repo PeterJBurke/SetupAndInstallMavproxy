@@ -20,28 +20,12 @@ sudo apt-get upgrade -y
 # Install EMACS, Professor Burke's favorite text editor
 sudo apt-get install emacs -y
 
-
-echo "Setting up Ardupilot build envirnoment"
-# https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux
-
+echo "Installing"
 sudo apt-get install git -y
-sudo apt-get install gitk git-gui -y
-git clone https://github.com/ArduPilot/ardupilot.git
-cd ~/ardupilot
-git submodule update --init --recursive
-Tools/environment_install/install-prereqs-ubuntu.sh -y
-. ~/.profile
+
+sudo apt-get install python3-dev python3-opencv python3-wxgtk4.0 python3-pip python3-matplotlib python3-lxml python3-pygame
+pip3 install PyYAML mavproxy --user
+echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
 
 echo "Finished setting up server!"
-echo "For help see:"
-echo "https://ardupilot.org/dev/docs/setting-up-sitl-on-linux.html"
-echo "https://ardupilot.org/mavproxy/docs/getting_started/quickstart.html"
-
-echo "To run SITL:"
-echo "Either logout and log back and to run these commands, or run manualy..."
-echo ". ~/.profile"
-echo " an example commmand:"
-echo "cd ~/ardupilot/ArduCopter;  sim_vehicle.py "
-echo " and "
-echo "cd ~/ardupilot/ArduCopter;  sim_vehicle.py --console --map --osd --out=udp:35.94.121.200:14550 --custom-location=33.64586111,-117.84275,25,0"
 
